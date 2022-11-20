@@ -1,6 +1,7 @@
 function App() {
     return (
         <div className="App">
+            <h1>Game Review</h1>
         </div>
     );
 }
