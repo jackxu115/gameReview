@@ -1,0 +1,20 @@
+.Search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #000000;
+}
+.Search_Game {
+  width: 192px;
+  height: 120px;
+  margin-bottom: 40px;
+}
+.Search_Game img {
+  width: 192px;
+  height: 120px;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=Search.css.map */

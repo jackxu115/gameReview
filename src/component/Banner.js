@@ -18,8 +18,10 @@ export const Banner = () => {
     }, [])
 
     let newGames = useSelector(state => state?.gameReducer?.newGames)
-    console.log(newGames[0])
-    console.log(isPlay)
+    // console.log(newGames[0])
+    // console.log(isPlay)
+
+
 
     return (
         <div className='Banner'>
@@ -56,6 +58,7 @@ export const Banner = () => {
                         width="100%"
                         height="100%"
                         onEnded={() => setIsPlay(prevState => !prevState)}
+                        muted={true}
                     />}
             </div>
         </div>

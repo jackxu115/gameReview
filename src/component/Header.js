@@ -14,7 +14,8 @@ export const Header = () => {
 
     useEffect(() => {
         console.log('input', input)
-        dispatch(actions.gameAction.searchGames(input))
+        input !== "" && dispatch(actions.gameAction.searchGames(input))
+        dispatch(actions.gameAction.searchGameInput(input))
     }, [input])
 
     return (

@@ -46,8 +46,7 @@ const fetchNewGames = () => async dispatch => {
     }
 }
 
-
-// fetch all games
+// search games
 const searchGames = (searchName) => async dispatch => {
 
     dispatch({
@@ -63,11 +62,12 @@ const searchGames = (searchName) => async dispatch => {
             },
             params: {
                 key: jackKey,
-                search: searchName
+                search: searchName,
+                page_size: 18
             }
         })
         const {data: {results}} = res
-        // console.log("get data", results)
+        // console.log("get data", res)
 
         dispatch({
             type: actionType.FETCH_LOADING,
@@ -92,8 +92,13 @@ const searchGames = (searchName) => async dispatch => {
     }
 }
 
+const searchGameInput = gameInput => ({
+    type: actionType.SEARCH_GAME_INPUT,
+    payload: gameInput
+})
 
 export default {
     fetchNewGames,
-    searchGames
+    searchGames,
+    searchGameInput
 }
