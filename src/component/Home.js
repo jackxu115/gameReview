@@ -1,6 +1,4 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import actions from "../action";
+import {useSelector} from "react-redux";
 import {Banner} from "./Banner";
 import {Header} from "./Header";
 import {Search} from "./Search";
