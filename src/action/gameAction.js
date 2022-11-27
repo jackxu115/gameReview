@@ -46,26 +46,54 @@ const fetchNewGames = () => async dispatch => {
     }
 }
 
-// fetch trailers
-const fetchTrailers = id => async dispatch => {
+
+// fetch all games
+const searchGames = (searchName) => async dispatch => {
+
+    dispatch({
+        type: actionType.FETCH_LOADING,
+        payload: true
+    })
     try {
         let res = await axios({
             method: 'get',
-            url: `${gameURL}/${id}/movies`,
+            url: gameURL,
             headers: {
                 'Content-Type': 'application/json'
             },
             params: {
                 key: jackKey,
+                search: searchName
             }
         })
-        console.log(res)
+        const {data: {results}} = res
+        // console.log("get data", results)
+
+        dispatch({
+            type: actionType.FETCH_LOADING,
+            payload: false
+        })
+
+        dispatch({
+            type: actionType.SEARCH_GAMES,
+            payload: results
+        })
+
     } catch (e) {
         console.log(e)
+        dispatch({
+            type: actionType.FETCH_LOADING,
+            payload: false
+        })
+        dispatch({
+            type: actionType.FETCH_FAILURE,
+            payload: e
+        })
     }
 }
 
+
 export default {
     fetchNewGames,
-    fetchTrailers
+    searchGames
 }

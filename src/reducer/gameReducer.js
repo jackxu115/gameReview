@@ -4,6 +4,7 @@ const initialState = {
     newGames: [],
     isLoading: null,
     errorMessage: null,
+    searchGames: []
 }
 
 
@@ -18,6 +19,9 @@ export const gameReducer = (state = initialState, action ) => {
         case actionType.FETCH_NEW_GAMES:
             // console.log('Fetch all games')
             return {...state, newGames: action?.payload}
+        case actionType.SEARCH_GAMES:
+            console.log('Search games', action.payload)
+            return {...state, searchGames: action?.payload}
         default:
             return state
     }

@@ -1,11 +1,21 @@
 import "../style/Header.scss"
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import actions from "../action";
 
 export const Header = () => {
     const [isDisplaySearchBar, setIsDisplaySearchBar] = useState(false)
-    console.log(isDisplaySearchBar)
+
+    const [input, setInput] = useState("")
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        console.log('input', input)
+        dispatch(actions.gameAction.searchGames(input))
+    }, [input])
 
     return (
         <div className="Header">
@@ -18,8 +28,11 @@ export const Header = () => {
                 {isDisplaySearchBar &&
                     <div className="Header_SearchBar_Input">
                         <SearchIcon className="Header_SearchBar_Input_Search" style={{color: '#ffffff'}}/>
-                        <input type="text"/>
-                        <CloseIcon className="Header_SearchBar_Input_Close" style={{color: '#ffffffff'}} onClick={() => setIsDisplaySearchBar(false)}/>
+                        <input type="text" onChange={event => {
+                            setInput(event.target.value)
+                        }}/>
+                        <CloseIcon className="Header_SearchBar_Input_Close" style={{color: '#ffffffff'}}
+                                   onClick={() => setIsDisplaySearchBar(false)}/>
                     </div>
                 }
                 {!isDisplaySearchBar &&
