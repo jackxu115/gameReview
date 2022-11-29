@@ -40,6 +40,10 @@
   top: 50%;
   transform: translateY(-50%);
   right: 7%;
+  z-index: 1;
+}
+.Header_SearchBar_Input_Close:hover {
+  cursor: pointer;
 }
 .Header_SearchBar_Input input {
   background-color: #000000;

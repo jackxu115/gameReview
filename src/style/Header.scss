@@ -41,6 +41,10 @@
         top: 50%;
         transform: translateY(-50%);
         right: 7%;
+        z-index: 1;
+        &:hover {
+          cursor: pointer;
+        }
       }
       input {
         background-color: #000000;
