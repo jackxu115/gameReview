@@ -6,12 +6,16 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import StopIcon from '@mui/icons-material/Stop';
 import ReactPlayer from 'react-player'
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 export const Banner = () => {
 
     const dispatch = useDispatch()
 
     const [isPlay, setIsPlay] = useState(false)
+
+    const [isMuted, setIsMuted] = useState(true)
 
     useEffect(() => {
         dispatch(actions.gameAction.fetchNewGames())
@@ -21,15 +25,17 @@ export const Banner = () => {
     // console.log(newGames[0])
     // console.log(isPlay)
 
-
-
     return (
         <div className='Banner'>
             <div className="Banner_Image"
                  style={{background: newGames[0] && `url('${newGames[0].background_image}') no-repeat center center/cover`}}>
                 <div className="Banner_Image_Name">{newGames[0] && newGames[0].name}</div>
                 <div className="Banner_Image_Button">
-                    <button className="Banner_Image_Button_Play" onClick={() => setIsPlay(prevState => !prevState)}>
+                    <button className="Banner_Image_Button_Play"
+                            onClick={() => {
+                                setIsPlay(prevState => !prevState)
+                                setIsMuted(true)
+                            }}>
                         {isPlay ?
                             <>
                                 <StopIcon style={{fontSize: 'xx-large'}}/>
@@ -46,6 +52,13 @@ export const Banner = () => {
                         <InfoOutlinedIcon style={{fontSize: 'x-large'}}/>
                         <div>More Info</div>
                     </button>
+                    {
+                        isPlay
+                        &&
+                        <button className="Banner_Image_Button_Volume" onClick={() => setIsMuted(prevState => !prevState)}>
+                            {isMuted ? <VolumeOffIcon style={{fontSize: 'medium'}}/> : <VolumeUpIcon style={{fontSize: 'medium'}}/>}
+                        </button>
+                    }
                 </div>
             </div>
             <div className="Banner_Video">
@@ -58,8 +71,9 @@ export const Banner = () => {
                         width="100%"
                         height="100%"
                         onEnded={() => setIsPlay(prevState => !prevState)}
-                        muted={true}
-                    />}
+                        muted={isMuted}
+                    />
+                }
             </div>
         </div>
     )

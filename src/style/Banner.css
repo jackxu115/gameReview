@@ -46,6 +46,16 @@
   color: #ffffff;
   gap: 5px;
 }
+.Banner_Image_Button_Volume {
+  position: absolute;
+  background-color: transparent;
+  border-radius: 50% !important;
+  border: 1px #ffffff solid !important;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  right: 10%;
+}
 .Banner_Video {
   position: absolute;
   width: 100%;
