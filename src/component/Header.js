@@ -13,27 +13,9 @@ export const Header = () => {
 
     const dispatch = useDispatch()
 
-    // const closeSearchBar = () => {
-    //     document.addEventListener('click', ev => {
-    //         if (ev.target.id !== "searchIcon") {
-    //             if (ev.target.id !== "searchInput") {
-    //                 if (ev.target.id !== "searchClose") {
-    //                     setIsDisplaySearchBar(false)
-    //                 }
-    //             }
-    //         }
-    //     })
-    // }
-
     useEffect(() => {
-        console.log('input', input)
         input !== "" && dispatch(actions.gameAction.searchGames(input))
         dispatch(actions.gameAction.searchGameInput(input))
-        // if (input === "") {
-        //     console.log('close')
-        //     closeSearchBar()
-        // }
-        // console.log(input === "")
     }, [input])
 
     return (

@@ -44,7 +44,9 @@
 .Banner_Image_Button_Info {
   background-color: #333333;
   color: #ffffff;
-  gap: 5px;
+}
+.Banner_Image_Button_Info:hover {
+  cursor: pointer;
 }
 .Banner_Image_Button_Volume {
   position: absolute;

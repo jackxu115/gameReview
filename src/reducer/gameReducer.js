@@ -6,7 +6,8 @@ const initialState = {
     errorMessage: null,
     searchGames: [],
     searchCount: null,
-    searchInput: ""
+    searchInput: "",
+    gameDetail: null
 }
 
 export const gameReducer = (state = initialState, action) => {
@@ -29,6 +30,9 @@ export const gameReducer = (state = initialState, action) => {
         case actionType.SEARCH_GAME_INPUT:
             // console.log('search game input')
             return {...state, searchInput: action?.payload}
+        case actionType.FETCH_GAME_DETAIL:
+            // console.log('fetch game detail')
+            return {...state, gameDetail: action?.payload}
         default:
             return state
     }

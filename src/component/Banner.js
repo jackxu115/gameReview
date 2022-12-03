@@ -3,11 +3,11 @@ import {useEffect, useState} from "react";
 import actions from "../action";
 import "../style/Banner.scss"
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import StopIcon from '@mui/icons-material/Stop';
 import ReactPlayer from 'react-player'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import {GameDetail} from "./GameDetail";
 
 export const Banner = () => {
 
@@ -22,8 +22,6 @@ export const Banner = () => {
     }, [])
 
     let newGames = useSelector(state => state?.gameReducer?.newGames)
-    // console.log(newGames[0])
-    // console.log(isPlay)
 
     return (
         <div className='Banner'>
@@ -49,14 +47,17 @@ export const Banner = () => {
                         }
                     </button>
                     <button className="Banner_Image_Button_Info">
-                        <InfoOutlinedIcon style={{fontSize: 'x-large'}}/>
-                        <div>More Info</div>
+                        <GameDetail gameDetail={newGames[0] && newGames[0]}/>
                     </button>
                     {
                         isPlay
                         &&
-                        <button className="Banner_Image_Button_Volume" onClick={() => setIsMuted(prevState => !prevState)}>
-                            {isMuted ? <VolumeOffIcon style={{fontSize: 'medium'}}/> : <VolumeUpIcon style={{fontSize: 'medium'}}/>}
+                        <button className="Banner_Image_Button_Volume"
+                                onClick={() => {
+                                    setIsMuted(prevState => !prevState)
+                                }}>
+                            {isMuted ? <VolumeOffIcon style={{fontSize: 'medium'}}/> :
+                                <VolumeUpIcon style={{fontSize: 'medium'}}/>}
                         </button>
                     }
                 </div>

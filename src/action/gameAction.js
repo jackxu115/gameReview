@@ -97,8 +97,53 @@ const searchGameInput = gameInput => ({
     payload: gameInput
 })
 
+// fetch game detail
+const fetchGameDetail = gameId => async dispatch => {
+    dispatch({
+        type: actionType.FETCH_LOADING,
+        payload: true
+    })
+    try {
+        let res = await axios({
+            method: 'get',
+            url: `${gameURL}/${gameId}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            params: {
+                key: jackKey,
+            }
+        })
+        const {data} = res
+
+        // console.log("get data", data)
+
+        dispatch({
+            type: actionType.FETCH_LOADING,
+            payload: false
+        })
+
+        dispatch({
+            type: actionType.FETCH_GAME_DETAIL,
+            payload: data
+        })
+
+    } catch (e) {
+        console.log(e)
+        dispatch({
+            type: actionType.FETCH_LOADING,
+            payload: false
+        })
+        dispatch({
+            type: actionType.FETCH_FAILURE,
+            payload: e
+        })
+    }
+}
+
 export default {
     fetchNewGames,
     searchGames,
-    searchGameInput
+    searchGameInput,
+    fetchGameDetail
 }
