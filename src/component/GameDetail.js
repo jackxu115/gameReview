@@ -13,9 +13,10 @@ export const GameDetail = ({gameDetail}) => {
     const dispatch = useDispatch()
 
     const [open, setOpen] = useState(false);
+
     const handleOpen = () => {
-        setOpen(true);
         gameDetail && dispatch(actions.gameAction.fetchGameDetail(gameDetail?.id))
+        setOpen(true);
     }
     const handleClose = () => setOpen(false);
 
