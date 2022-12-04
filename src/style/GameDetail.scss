@@ -1,5 +1,17 @@
-.GameDetail {
+@mixin GameDetailFont {
+  color: #777777;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
 
+@mixin GameDetailListLayout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.GameDetail {
   &_Button {
     display: flex;
     flex-direction: row;
@@ -10,8 +22,7 @@
 
   &_Game {
     width: 800px;
-    height: 1200px;
-    background-color: #333333;
+    background-color: #222222;
     position: absolute;
     top: 5%;
     left: 50%;
@@ -19,13 +30,73 @@
     color: #ffffff;
 
     &_bgImage {
-
+      position: relative;
       img {
         width: 800px;
         height: 300px;
         object-fit: cover;
       }
+      &_Close {
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        background-color: #222222;
+        border-radius: 50%;
+        padding: 3px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
 
+    &_Info {
+      margin: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &_GameName {
+        font-weight: 600;
+        font-size: 60px;
+      }
+
+      &_About {
+        &_Heading {
+          font-size: 25px;
+        }
+      }
+
+      &_Section {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        &_Card {
+          width: 360px;
+
+          &_Heading {
+            @include GameDetailFont;
+          }
+          &_Metascore {
+            font-weight: 700;
+            color: #00D924;
+          }
+
+          &_List {
+            @include GameDetailListLayout;
+          }
+        }
+
+        &_Tag {
+          &_Heading {
+            @include GameDetailFont;
+          }
+
+          &_List {
+            @include GameDetailListLayout;
+          }
+        }
+      }
     }
   }
 }

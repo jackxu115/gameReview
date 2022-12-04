@@ -7,18 +7,78 @@
 }
 .GameDetail_Game {
   width: 800px;
-  height: 1200px;
-  background-color: #333333;
+  background-color: #222222;
   position: absolute;
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
   color: #ffffff;
 }
+.GameDetail_Game_bgImage {
+  position: relative;
+}
 .GameDetail_Game_bgImage img {
   width: 800px;
   height: 300px;
   object-fit: cover;
+}
+.GameDetail_Game_bgImage_Close {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  background-color: #222222;
+  border-radius: 50%;
+  padding: 3px;
+}
+.GameDetail_Game_bgImage_Close:hover {
+  cursor: pointer;
+}
+.GameDetail_Game_Info {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.GameDetail_Game_Info_GameName {
+  font-weight: 600;
+  font-size: 60px;
+}
+.GameDetail_Game_Info_About_Heading {
+  font-size: 25px;
+}
+.GameDetail_Game_Info_Section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.GameDetail_Game_Info_Section_Card {
+  width: 360px;
+}
+.GameDetail_Game_Info_Section_Card_Heading {
+  color: #777777;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.GameDetail_Game_Info_Section_Card_Metascore {
+  font-weight: 700;
+  color: #00D924;
+}
+.GameDetail_Game_Info_Section_Card_List {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.GameDetail_Game_Info_Section_Tag_Heading {
+  color: #777777;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.GameDetail_Game_Info_Section_Tag_List {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 /*# sourceMappingURL=GameDetail.css.map */

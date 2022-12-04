@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import Modal from '@mui/material/Modal';
 import {useDispatch, useSelector} from "react-redux";
 import actions from "../action";
+import CloseIcon from '@mui/icons-material/Close';
 
 export const GameDetail = ({gameDetail}) => {
 
@@ -17,10 +18,6 @@ export const GameDetail = ({gameDetail}) => {
         gameDetail && dispatch(actions.gameAction.fetchGameDetail(gameDetail?.id))
     }
     const handleClose = () => setOpen(false);
-
-    // console.log(gameDetail)
-
-    console.log('game detail', game)
 
     return (
         <div className="GameDetail">
@@ -40,23 +37,102 @@ export const GameDetail = ({gameDetail}) => {
                         <>
                             <div className="GameDetail_Game_bgImage">
                                 <img src={game?.background_image}/>
+                                <CloseIcon className="GameDetail_Game_bgImage_Close" style={{fontSize: 'xx-large'}} onClick={handleClose}/>
                             </div>
-                            <div>
-                                <div>
-                                    <div>{game?.name}</div>
-                                    <div>{game?.released}</div>
+                            <div className="GameDetail_Game_Info">
+                                <div className="GameDetail_Game_Info_GameName">{game?.name}</div>
+                                <div className="GameDetail_Game_Info_About">
+                                    <div className="GameDetail_Game_Info_About_Heading">About</div>
                                     <div>{game?.description_raw}</div>
-                                    <div>Tags: {game?.tags.map((element, index) => <div
-                                        key={index}>{element.name}</div>)}</div>
                                 </div>
-                                <div>
-                                    <div>Platforms: {game?.platforms.map((element, index) => <div
-                                        key={index}>{element.platform.name}</div>)}</div>
-                                    <div>Genres: {game?.genres.map((element, index) => <div
-                                        key={index}>{element.name}</div>)}</div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                <div className="GameDetail_Game_Info_Section">
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Release Date</div>
+                                        <div>{game?.released}</div>
+                                    </div>
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Metascore</div>
+                                        <div
+                                            className="GameDetail_Game_Info_Section_Card_Metascore">{game?.metacritic}</div>
+                                    </div>
+                                </div>
+                                <div className="GameDetail_Game_Info_Section">
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Platforms</div>
+                                        <div className="GameDetail_Game_Info_Section_Card_List">
+                                            {game?.platforms.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.platform.name}</div>
+                                                }
+                                                return <div key={index}>{element.platform.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Genres</div>
+                                        <div className="GameDetail_Game_Info_Section_Card_List">
+                                            {game?.genres.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.name}</div>
+                                                }
+                                                return <div key={index}>{element.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="GameDetail_Game_Info_Section">
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Publishers</div>
+                                        <div className="GameDetail_Game_Info_Section_Card_List">
+                                            {game?.publishers.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.name}</div>
+                                                }
+                                                return <div key={index}>{element.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Developers</div>
+                                        <div className="GameDetail_Game_Info_Section_Card_List">
+                                            {game?.developers.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.name}</div>
+                                                }
+                                                return <div key={index}>{element.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="GameDetail_Game_Info_Section">
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Age rating</div>
+                                        <div>{game?.esrb_rating.name}</div>
+                                    </div>
+                                    <div className="GameDetail_Game_Info_Section_Card">
+                                        <div className="GameDetail_Game_Info_Section_Card_Heading">Stores</div>
+                                        <div className="GameDetail_Game_Info_Section_Card_List">
+                                            {game?.stores.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.store.name}</div>
+                                                }
+                                                return <div key={index}>{element.store.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="GameDetail_Game_Info_Section">
+                                    <div className="GameDetail_Game_Info_Section_Tag">
+                                        <div className="GameDetail_Game_Info_Section_Tag_Heading">Tags</div>
+                                        <div className="GameDetail_Game_Info_Section_Tag_List">
+                                            {game?.tags.map((element, index, array) => {
+                                                if (array.length - 1 === index) {
+                                                    return <div key={index}>{element.name}</div>
+                                                }
+                                                return <div key={index}>{element.name},</div>
+                                            })}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </>
